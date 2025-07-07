@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy sociálnych sietí 2025: Svetové vs. Slovenské</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+            min-height: 100vh;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header & Logo */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1E40AF, #059669, #EA580C);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1E40AF, #059669);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1E40AF;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #1E40AF;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .stat-card.blue { border-left-color: #1E40AF; }
+        .stat-card.green { border-left-color: #059669; }
+        .stat-card.orange { border-left-color: #EA580C; }
+        .stat-card.gray { border-left-color: #64748B; }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .stat-card.blue .stat-number { color: #1E40AF; }
+        .stat-card.green .stat-number { color: #059669; }
+        .stat-card.orange .stat-number { color: #EA580C; }
+        .stat-card.gray .stat-number { color: #64748B; }
+
+        .stat-label {
+            font-size: 14px;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .filter-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 20px;
+            border: 2px solid #E2E8F0;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: #1E40AF;
+            background: #1E40AF;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title.world { color: #1E40AF; }
+        .card-title.slovakia { color: #059669; }
+
+        /* Platform Stats */
+        .platform-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #F1F5F9;
+            transition: all 0.3s ease;
+        }
+
+        .platform-item:hover {
+            background: #F8FAFC;
+            padding-left: 10px;
+            border-radius: 8px;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .platform-stat {
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .platform-stat.high { background: #059669; }
+        .platform-stat.medium { background: #EA580C; }
+        .platform-stat.low { background: #64748B; }
+
+        /* Charts */
+        .chart-container {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            gap: 15px;
+        }
+
+        .chart-label {
+            width: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748B;
+        }
+
+        .chart-bar-fill {
+            height: 20px;
+            border-radius: 10px;
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .chart-value {
+            font-weight: 700;
+            color: #334155;
+            min-width: 50px;
+        }
+
+        /* Insights Section */
+        .insights-section {
+            background: linear-gradient(135deg, #1E40AF, #059669);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insights-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            pointer-events: none;
+        }
+
+        .insights-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            position: relative;
+        }
+
+        .insight-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .insight-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.02);
+        }
+
+        .insight-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .insight-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            .insights-section {
+                padding: 25px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .platform-item.animate {
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header loading">
+            <div class="logo">
+                <div class="logo-icon">📊</div>
+                <div class="logo-text">SocialTrends Pro</div>
+            </div>
+            <h1>📱 Trendy sociálnych sietí 2025</h1>
+            <p>Komplexný pohľad na svetové a slovenské trendy s interaktívnymi údajmi</p>
+        </div>
+
+        <!-- Key Stats -->
+        <div class="stats-grid loading">
+            <div class="stat-card blue" onclick="animateCard(this)">
+                <div class="stat-number" data-target="46">0%</div>
+                <div class="stat-label">Svetové nakupovanie cez sociálne siete</div>
+            </div>
+            <div class="stat-card green" onclick="animateCard(this)">
+                <div class="stat-number" data-target="91.8">0%</div>
+                <div class="stat-label">Slovákov používa internet</div>
+            </div>
+            <div class="stat-card orange" onclick="animateCard(this)">
+                <div class="stat-number" data-target="177">0</div>
+                <div class="stat-label">Minút denne na sociálnych sieťach (SK)</div>
+            </div>
+            <div class="stat-card gray" onclick="animateCard(this)">
+                <div class="stat-number" data-target="3.98">0</div>
+                <div class="stat-label">Mil. aktívnych Slovákov</div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-section loading">
+            <div class="filter-title">
+                🎯 Filtrovať podľa generácie
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterGeneration('all')">Všetky generácie</button>
+                <button class="filter-btn" onclick="filterGeneration('genz')">Gen Z (15-26)</button>
+                <button class="filter-btn" onclick="filterGeneration('millennials')">Millennials (27-42)</button>
+                <button class="filter-btn" onclick="filterGeneration('genx')">Gen X (43-58)</button>
+                <button class="filter-btn" onclick="filterGeneration('boomers')">Boomers (60+)</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-grid loading">
+            <!-- World Trends -->
+            <div class="content-card">
+                <div class="card-title world">
+                    🌍 Svetové trendy
+                </div>
+                
+                <div class="chart-container">
+                    <h4 style="margin-bottom: 15px; color: #64748B;">Top platformy globálne</h4>
+                    <div class="chart-bar">
+                        <div class="chart-label">TikTok</div>
+                        <div class="chart-bar-fill" style="width: 85%; background: linear-gradient(90deg, #1E40AF, #3B82F6);"></div>
+                        <div class="chart-value">85%</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">Instagram</div>
+                        <div class="chart-bar-fill" style="width: 78%; background: linear-gradient(90deg, #059669, #10B981);"></div>
+                        <div class="chart-value">78%</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">YouTube</div>
+                        <div class="chart-bar-fill" style="width: 72%; background: linear-gradient(90deg, #EA580C, #F97316);"></div>
+                        <div class="chart-value">72%</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">Facebook</div>
+                        <div class="chart-bar-fill" style="width: 65%; background: linear-gradient(90deg, #64748B, #94A3B8);"></div>
+                        <div class="chart-value">65%</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <h4 style="margin-bottom: 15px; color: #64748B;">Kľúčové trendy</h4>
+                    <div class="platform-item">
+                        <div class="platform-name">🎥 Video content dominancia</div>
+                        <div class="platform-stat high">Vysoká</div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-name">🤖 AI-generovaný obsah</div>
+                        <div class="platform-stat high">Rastúca</div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-name">🛒 Social commerce</div>
+                        <div class="platform-stat medium">1.2T USD</div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-name">📱 Nové platformy</div>
+                        <div class="platform-stat medium">Bluesky, Threads</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slovak Trends -->
+            <div class="content-card">
+                <div class="card-title slovakia">
+                    🇸🇰 Slovenské trendy
+                </div>
+                
+                <div class="chart-container">
+                    <h4 style="margin-bottom: 15px; color: #64748B;">Top platformy na Slovensku</h4>
+                    <div class="chart-bar">
+                        <div class="chart-label">Facebook</div>
+                        <div class="chart-bar-fill" style="width: 80%; background: linear-gradient(90deg, #059669, #10B981);"></div>
+                        <div class="chart-value">80%</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">YouTube</div>
+                        <div class="chart-bar-fill" style="width: 60%; background: linear-gradient(90deg, #EA580C, #F97316);"></div>
+                        <div class="chart-value">60%</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">Instagram</div>
+                        <div class="chart-bar-fill" style="width: 45%; background: linear-gradient(90deg, #1E40AF, #3B82F6);"></div>
+                        <div class="chart-value">45%</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-label">TikTok</div>
+                        <div class="chart-bar-fill" style="width: 35%; background: linear-gradient(90deg, #64748B, #94A3B8);"></div>
+                        <div class="chart-value">35%</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <h4 style="margin-bottom: 15px; color: #64748B;">Slovenské špecifiká</h4>
+                    <div class="platform-item">
+                        <div class="platform-name">👥 Facebook dominancia</div>
+                        <div class="platform-stat high">Stabilná</div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-name">📸 Stories popularita</div>
+                        <div class="platform-stat medium">Vyššia ako CZ</div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-name">🛒 E-commerce využitie</div>
+                        <div class="platform-stat low">Nízke</div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-name">👴 Seniori 60+</div>
+                        <div class="platform-stat medium">87% FB</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insights -->
+        <div class="insights-section loading">
+            <div class="insights-title">💡 Kľúčové poznatky a odporúčania</div>
+            <div class="insights-grid">
+                <div class="insight-item">
+                    <div class="insight-icon">🎯</div>
+                    <div class="insight-text"><strong>Facebook-first stratégia</strong> pre slovenský trh naďalej kľúčová</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon">📹</div>
+                    <div class="insight-text"><strong>Video obsah</strong> postupne implementovať - Slováci oceňujú kvalitu</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon">🤖</div>
+                    <div class="insight-text"><strong>AI nástroje</strong> - príležitosť pre early adopters na SK trhu</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon">👥</div>
+                    <div class="insight-text"><strong>Komunitné aktivity</strong> uprednostňované pred commerce obsahom</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon">⏰</div>
+                    <div class="insight-text"><strong>Timing je kľúč:</strong> Facebook večer, Instagram popoludnie</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon">🌟</div>
+                    <div class="insight-text"><strong>Oneskorenie 1-2 roky</strong> za svetovými trendmi = príležitosť</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize animations on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate loading elements
+            setTimeout(() => {
+                document.querySelectorAll('.loading').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }, 100);
+
+            // Animate numbers
+            animateNumbers();
+            
+            // Animate chart bars
+            setTimeout(() => {
+                animateCharts();
+            }, 1000);
+        });
+
+        function animateNumbers() {
+            document.querySelectorAll('.stat-number').forEach(el => {
+                const target = parseInt(el.dataset.target);
+                const suffix = el.textContent.includes('%') ? '%' : 
+                              el.textContent.includes('mil') ? ' mil.' : '';
+                let current = 0;
+                const increment = target / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = Math.floor(current) + suffix;
+                }, 40);
+            });
+        }
+
+        function animateCharts() {
+            document.querySelectorAll('.chart-bar-fill').forEach((bar, index) => {
+                setTimeout(() => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                }, index * 200);
+            });
+        }
+
+        function animateCard(card) {
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                card.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        function filterGeneration(generation) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Animation for filter change
+            const cards = document.querySelectorAll('.content-card');
+            cards.forEach(card => {
+                card.style.opacity = '0.5';
+                card.style.transform = 'scale(0.98)';
+            });
+
+            setTimeout(() => {
+                // Update content based on generation
+                updateContentForGeneration(generation);
+                cards.forEach(card => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                });
+            }, 300);
+        }
+
+        function updateContentForGeneration(generation) {
+            const generationData = {
+                'genz': {
+                    worldCharts: [
+                        {platform: 'TikTok', percentage: 95, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'Instagram', percentage: 88, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'Snapchat', percentage: 78, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'YouTube', percentage: 70, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    worldTrends: [
+                        {name: '⚡ Micro-content (15s videá)', status: 'Extrémne vysoká', type: 'high'},
+                        {name: '🎮 Gaming livestreamy', status: 'Dominantná', type: 'high'},
+                        {name: '💸 Impulse shopping', status: '89% cez mobile', type: 'medium'},
+                        {name: '🔥 Viral challenges', status: 'Kľúčové pre reach', type: 'high'}
+                    ],
+                    slovakiaCharts: [
+                        {platform: 'TikTok', percentage: 68, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'Instagram', percentage: 58, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'YouTube', percentage: 52, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'Facebook', percentage: 25, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    stats: {
+                        worldCommerce: 68,
+                        slovakInternet: 99.2,
+                        activeSlovaks: 0.85,
+                        timeSpent: 220
+                    }
+                },
+                'millennials': {
+                    worldCharts: [
+                        {platform: 'Instagram', percentage: 85, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'Facebook', percentage: 78, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'YouTube', percentage: 72, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'LinkedIn', percentage: 55, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    worldTrends: [
+                        {name: '💼 Professional branding', status: 'Kľúčová', type: 'high'},
+                        {name: '🏠 Work-from-home content', status: 'Stabilná', type: 'medium'},
+                        {name: '👶 Family & lifestyle', status: 'Rastúca', type: 'medium'},
+                        {name: '💰 Investment education', status: 'Trending', type: 'high'}
+                    ],
+                    slovakiaCharts: [
+                        {platform: 'Facebook', percentage: 85, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'Instagram', percentage: 65, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'YouTube', percentage: 58, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'LinkedIn', percentage: 32, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    stats: {
+                        worldCommerce: 52,
+                        slovakInternet: 96.8,
+                        activeSlovaks: 1.2,
+                        timeSpent: 165
+                    }
+                },
+                'genx': {
+                    worldCharts: [
+                        {platform: 'Facebook', percentage: 82, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'YouTube', percentage: 68, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'LinkedIn', percentage: 45, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'Instagram', percentage: 42, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    worldTrends: [
+                        {name: '📰 News & informácie', status: 'Priorita #1', type: 'high'},
+                        {name: '👨‍👩‍👧‍👦 Rodinné fotografie', status: 'Stabilná', type: 'medium'},
+                        {name: '🎓 Vzdelávací obsah', status: 'Rastúca', type: 'medium'},
+                        {name: '🏢 Business networking', status: 'Profesionálne', type: 'high'}
+                    ],
+                    slovakiaCharts: [
+                        {platform: 'Facebook', percentage: 90, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'YouTube', percentage: 65, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'LinkedIn', percentage: 28, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'Instagram', percentage: 25, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    stats: {
+                        worldCommerce: 35,
+                        slovakInternet: 89.5,
+                        activeSlovaks: 1.1,
+                        timeSpent: 145
+                    }
+                },
+                'boomers': {
+                    worldCharts: [
+                        {platform: 'Facebook', percentage: 75, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'YouTube', percentage: 55, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'Pinterest', percentage: 38, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'WhatsApp', percentage: 32, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    worldTrends: [
+                        {name: '👴 Kontakt s rodinou', status: 'Primárne', type: 'high'},
+                        {name: '📖 Dlhšie články', status: 'Preferované', type: 'medium'},
+                        {name: '🏥 Zdravotné informácie', status: 'Dôležité', type: 'medium'},
+                        {name: '🌱 Hobby & réwie', status: 'Rastúce', type: 'high'}
+                    ],
+                    slovakiaCharts: [
+                        {platform: 'Facebook', percentage: 87, gradient: 'linear-gradient(90deg, #059669, #10B981)'},
+                        {platform: 'YouTube', percentage: 42, gradient: 'linear-gradient(90deg, #EA580C, #F97316)'},
+                        {platform: 'WhatsApp', percentage: 28, gradient: 'linear-gradient(90deg, #1E40AF, #3B82F6)'},
+                        {platform: 'Instagram', percentage: 15, gradient: 'linear-gradient(90deg, #64748B, #94A3B8)'}
+                    ],
+                    stats: {
+                        worldCommerce: 18,
+                        slovakInternet: 72.3,
+                        activeSlovaks: 0.83,
+                        timeSpent: 120
+                    }
+                }
+            };
+
+            if (generation === 'all') {
+                location.reload(); // Reset to default view
+                return;
+            }
+
+            const data = generationData[generation];
+            if (data) {
+                const statCards = document.querySelectorAll('.stat-card');
+                
+                // Update all 4 statistics with animation
+                updateStatWithAnimation(statCards[0].querySelector('.stat-number'), data.stats.worldCommerce, '%');
+                statCards[0].querySelector('.stat-label').textContent = `${generation.toUpperCase()} - Svetové nakupovanie cez sociálne siete`;
+                
+                updateStatWithAnimation(statCards[1].querySelector('.stat-number'), data.stats.slovakInternet, '%');
+                statCards[1].querySelector('.stat-label').textContent = `${generation.toUpperCase()} Slovákov používa internet`;
+                
+                updateStatWithAnimation(statCards[2].querySelector('.stat-number'), data.stats.timeSpent, '');
+                statCards[2].querySelector('.stat-label').textContent = `Minút denne na soc. sieťach - ${generation.toUpperCase()}`;
+                
+                updateStatWithAnimation(statCards[3].querySelector('.stat-number'), data.stats.activeSlovaks, '');
+                statCards[3].querySelector('.stat-label').textContent = `Mil. aktívnych ${generation.toUpperCase()} Slovákov`;
+
+                // Update World Charts
+                updateCharts(data.worldCharts, 'world');
+                
+                // Update Slovakia Charts  
+                updateCharts(data.slovakiaCharts, 'slovakia');
+                
+                // Update World Trends
+                updateTrends(data.worldTrends, 'world');
+                
+                // Update card titles to show generation
+                const worldTitle = document.querySelector('.card-title.world');
+                const slovakiaTitle = document.querySelector('.card-title.slovakia');
+                worldTitle.innerHTML = `🌍 Svetové trendy - ${generation.toUpperCase()}`;
+                slovakiaTitle.innerHTML = `🇸🇰 Slovenské trendy - ${generation.toUpperCase()}`;
+            }
+        }
+
+        function updateCharts(chartData, type) {
+            const cards = document.querySelectorAll('.content-card');
+            const targetCard = type === 'world' ? cards[0] : cards[1];
+            const chartContainer = targetCard.querySelector('.chart-container');
+            const chartBars = chartContainer.querySelectorAll('.chart-bar');
+            
+            chartData.forEach((item, index) => {
+                if (chartBars[index]) {
+                    const label = chartBars[index].querySelector('.chart-label');
+                    const fill = chartBars[index].querySelector('.chart-bar-fill');
+                    const value = chartBars[index].querySelector('.chart-value');
+                    
+                    label.textContent = item.platform;
+                    value.textContent = item.percentage + '%';
+                    
+                    // Animate the bar
+                    fill.style.width = '0%';
+                    fill.style.background = item.gradient;
+                    setTimeout(() => {
+                        fill.style.width = item.percentage + '%';
+                    }, index * 200);
+                }
+            });
+        }
+
+        function updateTrends(trendsData, type) {
+            const cards = document.querySelectorAll('.content-card');
+            const targetCard = type === 'world' ? cards[0] : cards[1];
+            const trendsContainer = targetCard.querySelector('div[style*="margin-top: 25px"]');
+            const trendItems = trendsContainer.querySelectorAll('.platform-item');
+            
+            trendsData.forEach((item, index) => {
+                if (trendItems[index]) {
+                    const name = trendItems[index].querySelector('.platform-name');
+                    const stat = trendItems[index].querySelector('.platform-stat');
+                    
+                    name.textContent = item.name;
+                    stat.textContent = item.status;
+                    stat.className = `platform-stat ${item.type}`;
+                    
+                    // Add entrance animation
+                    trendItems[index].style.opacity = '0';
+                    trendItems[index].style.transform = 'translateX(-20px)';
+                    setTimeout(() => {
+                        trendItems[index].style.opacity = '1';
+                        trendItems[index].style.transform = 'translateX(0)';
+                        trendItems[index].style.transition = 'all 0.4s ease';
+                    }, index * 150);
+                }
+            });
+        }
+
+        function updateStatWithAnimation(element, newValue, suffix) {
+            let currentValue = 0;
+            const increment = newValue / 30;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= newValue) {
+                    currentValue = newValue;
+                    clearInterval(timer);
+                }
+                
+                if (suffix === '%') {
+                    element.textContent = Math.floor(currentValue) + '%';
+                } else if (newValue < 10) {
+                    element.textContent = currentValue.toFixed(1);
+                } else {
+                    element.textContent = Math.floor(currentValue);
+                }
+            }, 30);
+        }
+
+        // Add click animations to insight items
+        document.querySelectorAll('.insight-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.02)';
+                }, 200);
+            });
+        });
+
+        // Parallax effect for insights section
+        window.addEventListener('scroll', function() {
+            const insights = document.querySelector('.insights-section');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (insights) {
+                insights.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add hover effects to charts
+        document.querySelectorAll('.chart-bar').forEach(bar => {
+            bar.addEventListener('mouseenter', function() {
+                const fill = this.querySelector('.chart-bar-fill');
+                fill.style.filter = 'brightness(1.1)';
+                fill.style.transform = 'scaleY(1.1)';
+            });
+            
+            bar.addEventListener('mouseleave', function() {
+                const fill = this.querySelector('.chart-bar-fill');
+                fill.style.filter = 'brightness(1)';
+                fill.style.transform = 'scaleY(1)';
+            });
+        });
+    </script>
+</body>
+</html>
